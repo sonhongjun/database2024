@@ -16,7 +16,9 @@
     <p> 검색 결과 </p>
     <ul>
         {% for station in stations %}
-        <li>{{ station[0] }}</li>
+        <li>
+            <a href="/stations/{{ station[0] }}/">{{ station[0] }}</a>
+        </li>
         {% else %}
         <li>No results found</li>
         {% endfor %}
