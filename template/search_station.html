@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>서울시 지하철</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <h1>서울시 지하철 정보</h1>
+    <p> 원하는 역을 선택해주세요 </p>
+    <form method="POST">
+        <input type="text" name="name">
+        <input type="submit" value="Create">
+    </form>
+    <p> 검색 결과 </p>
+    <ul>
+        {% for station in stations %}
+        <li>{{ station[0] }}</li>
+        {% else %}
+        <li>No results found</li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
