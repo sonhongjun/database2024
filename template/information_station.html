@@ -7,9 +7,11 @@
 </head>
 
 <body>
-    <h1>{{ station_name }} 정보</h1>
-    <br>
-    <a href="/stations/">뒤로가기</a>
+    <h1>{{ station_name }} 정보 <a href="/stations/">뒤로가기</a> </h1>
+    <form method="POST">
+        <input type="hidden" name="favorite_item" value="{{ station_name }}">
+        <button type="submit" name="save">저장</button>
+    </form>
     <p>확인할 정보를 골라주세요</p>
     <form method="POST">
         <input type="submit" name="category" value="물품보관함">
