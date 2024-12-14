@@ -2,12 +2,12 @@
 <html>
 
 <head>
-    <title>{{station_name}} 정보</title>
-    <meta charset="uft-8">
+    <title>{{ station_name }} 정보</title>
+    <meta charset="utf-8">
 </head>
 
 <body>
-    <h1>{{station_name}} 정보</h1>
+    <h1>{{ station_name }} 정보</h1>
     <br>
     <a href="/stations/">뒤로가기</a>
     <p>확인할 정보를 골라주세요</p>
@@ -21,20 +21,16 @@
     {% if informations %}
     <table border="1">
         <thead>
-            <tr>
-                <th>항목 1</th>
-                <th>항목 2</th>
-                <th>항목 3</th>
-                <!-- 테이블 헤더를 실제 데이터에 맞게 수정 -->
-            </tr>
+            {% for column in columns %}
+            <td>{{ column }}</td>
+            {% endfor %}
         </thead>
         <tbody>
             {% for information in informations %}
             <tr>
-                <td>{{ information[0] }}</td>
-                <td>{{ information[1] }}</td>
-                <td>{{ information[2] }}</td>
-                <!-- 정보의 열을 실제 데이터에 맞게 수정 -->
+                {% for data in information %}
+                <td>{{ data }}</td>
+                {% endfor %}
             </tr>
             {% endfor %}
         </tbody>
