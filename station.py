@@ -11,7 +11,13 @@ def showSubwaystation():
     cursor = db.cursor()
     lists = cursor.execute('SELECT 역명 from 즐겨찾기').fetchall()
     if request.method == 'POST':
-        items = cursor.execute('SELECT distinct 역명 from 편의시설 where 역명 like (?)', ('%' + request.form['name'] + '%',)).fetchall()
+        if 'del' in request.form:
+            station_name = request.form['station_name']
+            cursor.execute('DELETE from 즐겨찾기 where 역명 = (?)', (station_name,))
+            db.commit()
+            return redirect('/stations/')
+        else:
+            items = cursor.execute('SELECT distinct 역명 from 편의시설 where 역명 like (?)', ('%' + request.form['name'] + '%',)).fetchall()
     db.close()
     return render_template('search_station.html', stations = items, lists = lists)
 
