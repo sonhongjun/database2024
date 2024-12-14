@@ -16,13 +16,16 @@ def showSubwaystation():
 @app.route('/stations/<string:station_name>/', methods=['GET', 'POST'])
 def showInformation(station_name):
     items = []
+    columns = []
     if request.method == 'POST':
         db = sqlite3.connect('subway_station.db')
         cursor = db.cursor()
         category = request.form['category']
         items = cursor.execute(f'SELECT * FROM {category} WHERE 역명 LIKE (?)', (station_name + '%',)).fetchall()
+        cursor.execute(f'PRAGMA table_info({category})')
+        columns = [row[1] for row in cursor.fetchall()]
         db.close()
-    return render_template('information_station.html', informations = items)
+    return render_template('information_station.html', station_name = station_name, informations = items, columns = columns)
 
 if __name__ == '__main__':
     app.debug = True
