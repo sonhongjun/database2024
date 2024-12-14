@@ -26,8 +26,12 @@
     <p> 즐겨찾기 목록 </p>
     <ul>
         {% for list in lists %}
-        <li>
+        <li style="display: flex; align-items: center;">
             <a href="/stations/{{ list[0] }}/">{{ list[0] }}</a>
+            <form method="POST" style="margin-left: 10px;">
+                <input type="hidden" name="station_name" value="{{ list[0] }}">
+                <button type="submit" name="del" style="padding: 2px 5px;">삭제</button>
+            </form>
         </li>
         {% else %}
         <li>즐겨찾기 목록이 없습니다다</li>
