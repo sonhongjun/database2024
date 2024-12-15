@@ -21,22 +21,24 @@
     </form>
     <p>정보</p>
     {% if informations %}
-    <table border="1">
-        <thead>
-            {% for column in columns %}
-            <td>{{ column }}</td>
-            {% endfor %}
-        </thead>
-        <tbody>
-            {% for information in informations %}
-            <tr>
-                {% for data in information %}
-                <td>{{ data }}</td>
+    <div style="overflow-x: auto; white-space: nowrap;">
+        <table border="1">
+            <thead>
+                {% for column in columns %}
+                <td>{{ column }}</td>
                 {% endfor %}
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for information in informations %}
+                <tr>
+                    {% for data in information %}
+                    <td>{{ data }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
     {% else %}
     <p>No results found</p>
     {% endif %}
