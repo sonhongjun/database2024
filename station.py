@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 import sqlite3
+from waitress import serve  # Waitress 임포트
 
 app = Flask(__name__, template_folder='template')
 
@@ -44,5 +45,4 @@ def showInformation(station_name):
     return render_template('information_station.html', station_name = station_name, informations = items, columns = columns)
 
 if __name__ == '__main__':
-    app.debug = True
-    app.run(host='127.0.0.1', port = 5000)
+    serve(app, host='0.0.0.0', port=5000)  # Waitress로 서버 실행
